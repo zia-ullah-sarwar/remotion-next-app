@@ -1,0 +1,53 @@
+.light-mode {
+  background-color: #f5f8fa;
+}
+.dark-mode {
+  background-color: #15202b;
+  color: #ffffff;
+}
+.twitter-post {
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+.light-mode .twitter-post {
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
+}
+.dark-mode .twitter-post {
+  background-color: #1b2836;
+  border: 1px solid #38444d;
+}
+.twitter-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.twitter-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.twitter-name {
+  font-weight: bold;
+}
+.twitter-username {
+  color: #657786;
+}
+.dark-mode .twitter-username {
+  color: #8899a6;
+}
+.twitter-content {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.twitter-image {
+  margin-top: 10px;
+  border-radius: 15px;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}

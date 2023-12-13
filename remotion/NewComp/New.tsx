@@ -7,27 +7,21 @@ import {
   useVideoConfig,
 } from "remotion";
 import { CompositionProps } from "../../types/constants";
-import { NextLogo } from "./NextLogo";
-import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
+ import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
 import React, { useMemo } from "react";
 import { Rings } from "./Rings";
 import { TextFade } from "./TextFade";
-import Twitter from "./Twitter";
-import "./Twitter.css"
- 
-loadFont();
 
+loadFont();
 const container: React.CSSProperties = {
   backgroundColor: "white",
-
 };
-
 const logo: React.CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
 };
 
-export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
+export const New = ({ title }: z.infer<typeof CompositionProps>) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -49,21 +43,17 @@ export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
   }, []);
 
   return (
-    <AbsoluteFill className="bg-gradient-kye-meh">
+    <AbsoluteFill style={container}>
+      <Sequence durationInFrames={transitionStart + transitionDuration}>
+        <Rings outProgress={logoOut}></Rings>
+        <AbsoluteFill style={logo}>
+         </AbsoluteFill>
+      </Sequence>
       <Sequence from={transitionStart + transitionDuration / 2}>
         <TextFade>
-          <Twitter />
-
+          <h1 style={titleStyle}>{title}</h1>
         </TextFade>
       </Sequence>
-      <Sequence durationInFrames={transitionStart + transitionDuration}>
-        <h1 style={{
-          color: "white",
-          fontSize: "32px",
-          fontWeight:"bolder"
-        }}></h1>
-       </Sequence>
-     
     </AbsoluteFill>
   );
 };

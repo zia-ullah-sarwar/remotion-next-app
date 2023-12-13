@@ -13,7 +13,6 @@ const RadialGradient: React.FC<{
       style={{
         justifyContent: "center",
         alignItems: "center",
- 
       }}
     >
       <div
@@ -26,7 +25,6 @@ const RadialGradient: React.FC<{
           boxShadow: "0 0 100px rgba(0, 0, 0, 0.05)",
         }}
       ></div>
-      
     </AbsoluteFill>
   );
 };
@@ -50,7 +48,7 @@ export const Rings: React.FC<{
             <RadialGradient
               key={i}
               radius={height * 0.3 * i}
-              color={interpolateColors(i, [0, 4], ["green", "red"])}
+              color={interpolateColors(i, [0, 4], ["#fff", "#fff"])}
             />
           );
         })
