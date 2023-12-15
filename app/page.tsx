@@ -4,6 +4,7 @@ import { Player } from "@remotion/player";
 import type { NextPage } from "next";
 import React, { useMemo, useState } from "react";
 import { Main } from "../remotion/MyComp/Main";
+import { New } from "../remotion/TestComp/New";
 import {
   CompositionProps,
   defaultMyCompProps,
@@ -12,11 +13,18 @@ import {
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from "../types/constants";
-import { z } from "zod";
+import {
+  TEST_DURATION_IN_FRAMES,
+   defaultTestCompProps,
+  TEST_VIDEO_FPS,
+  TEST_VIDEO_HEIGHT,
+  TEST_VIDEO_WIDTH,
+  TestCompositionProps
+} from "../types/testConstants"
+ import { z } from "zod";
 import { RenderControls } from "../components/RenderControls";
-import { Tips } from "../components/Tips/Tips";
-import { Spacing } from "../components/Spacing";
-
+ import { Spacing } from "../components/Spacing";
+ 
 const container: React.CSSProperties = {
   maxWidth: 768,
   margin: "auto",
@@ -37,17 +45,36 @@ const player: React.CSSProperties = {
 
 const Home: NextPage = () => {
   const [text, setText] = useState<string>(defaultMyCompProps.title);
+  const [testText, setTestText] = useState<string>(defaultTestCompProps.title);
 
   const inputProps: z.infer<typeof CompositionProps> = useMemo(() => {
     return {
       title: text,
-    };
+      };
+  }, [text]);
+  const inputTestProps: z.infer<typeof TestCompositionProps> = useMemo(() => {
+    return {
+      title: testText,
+      color:testText
+     };
   }, [text]);
 
   return (
     <div>
       <div style={container}>
         <div className="cinematics" style={outer}>
+          <Player
+            component={New}
+            inputProps={inputTestProps}
+            durationInFrames={TEST_DURATION_IN_FRAMES}
+            fps={TEST_VIDEO_FPS}
+            compositionHeight={TEST_VIDEO_HEIGHT}
+            compositionWidth={TEST_VIDEO_WIDTH}
+            style={player}
+            controls
+            autoPlay
+            loop
+          />
           <Player
             component={Main}
             inputProps={inputProps}
@@ -63,15 +90,15 @@ const Home: NextPage = () => {
         </div>
         <RenderControls
           text={text}
-          setText={setText}
+           setText={setText}
           inputProps={inputProps}
         ></RenderControls>
+          
         <Spacing></Spacing>
         <Spacing></Spacing>
         <Spacing></Spacing>
         <Spacing></Spacing>
-        <Tips></Tips>
-      </div>
+       </div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ import { Spacing } from "./Spacing";
 
 export const RenderControls: React.FC<{
   text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
+   setText: React.Dispatch<React.SetStateAction<string>>;
   inputProps: z.infer<typeof CompositionProps>;
 }> = ({ text, setText, inputProps }) => {
   const { renderMedia, state, undo } = useRendering(COMP_NAME, inputProps);

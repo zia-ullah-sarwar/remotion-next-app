@@ -31,9 +31,8 @@ export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const transitionStart = 2 * fps;
+  const transitionStart = 0 * fps;
   const transitionDuration = 1 * fps;
-
   const logoOut = spring({
     fps,
     frame,
@@ -49,21 +48,15 @@ export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
   }, []);
 
   return (
+    <>
     <AbsoluteFill className="bg-gradient-kye-meh">
-      <Sequence from={transitionStart + transitionDuration / 2}>
+      <Sequence from={transitionStart + transitionDuration}>
         <TextFade>
           <Twitter />
-
         </TextFade>
-      </Sequence>
-      <Sequence durationInFrames={transitionStart + transitionDuration}>
-        <h1 style={{
-          color: "white",
-          fontSize: "32px",
-          fontWeight:"bolder"
-        }}></h1>
-       </Sequence>
-     
+      </Sequence>     
     </AbsoluteFill>
+    </>
+    
   );
 };

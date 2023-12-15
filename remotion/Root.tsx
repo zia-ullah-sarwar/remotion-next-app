@@ -8,7 +8,15 @@ import {
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from "../types/constants";
-import { NextLogo } from "./MyComp/NextLogo";
+import {
+  TEST_COMP_NAME,
+  TEST_DURATION_IN_FRAMES,
+  TEST_VIDEO_FPS,
+  TEST_VIDEO_HEIGHT,
+  TEST_VIDEO_WIDTH,
+  defaultTestCompProps,
+} from "../types/testConstants";
+import { New } from "./TestComp/New";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -23,15 +31,13 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={defaultMyCompProps}
       />
       <Composition
-        id="NextLogo"
-        component={NextLogo}
-        durationInFrames={300}
-        fps={30}
-        width={140}
-        height={140}
-        defaultProps={{
-          outProgress: 0,
-        }}
+        id={TEST_COMP_NAME}
+        component={New}
+        durationInFrames={TEST_DURATION_IN_FRAMES}
+        height={TEST_VIDEO_HEIGHT}
+        width={TEST_VIDEO_WIDTH}
+        fps={TEST_VIDEO_FPS}
+        defaultProps={defaultTestCompProps}
       />
     </>
   );
